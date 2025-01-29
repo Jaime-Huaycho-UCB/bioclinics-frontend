@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { iniciarSesion } from '../peticiones/peticiones';
 import "./iniciarSesion.css";
 
 const IniciarSesion = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [nombreUsuario, setNombreUsuario] = useState('');
+  const [contrasena, setContrasena] = useState('');
   const navigate = useNavigate();
 
-  // Usuario y contraseña predeterminados
-  const predefinedUser = {
-    email: 'admin@farmacia.com',
-    password: '123456',
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  // Manejo del formulario
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Evita el refresco de la página
-
-    if (email === predefinedUser.email && password === predefinedUser.password) {
-      // Redirigir a otra pantalla si las credenciales son correctas
-      navigate('/dashboard'); // Cambia "/dashboard" por la ruta deseada
-    } else {
-      alert('Usuario o contraseña incorrectos');
+    try {
+      const data = await iniciarSesion(nombreUsuario, contrasena);
+      if (data.salida) {
+        navigate('/dashboard');
+      } else {
+        alert(data.mensaje || 'Usuario o contraseña incorrectos');
+      }
+    } catch (error) {
+      alert(error || 'Error al iniciar sesión');
     }
   };
 
@@ -39,24 +37,24 @@ const IniciarSesion = () => {
         <form className="contenedorFormulario" onSubmit={handleSubmit}>
           <div className="contenedorInputs">
             <div className="inputItem">
-              <label htmlFor="email">Correo Electrónico:</label>
+              <label htmlFor="nombreUsuario">Nombre de Usuario:</label>
               <input
-                type="email"
-                id="email"
-                placeholder="Ingresa tu correo"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                id="nombreUsuario"
+                placeholder="Ingresa tu usuario"
+                value={nombreUsuario}
+                onChange={(e) => setNombreUsuario(e.target.value)}
               />
             </div>
 
             <div className="inputItem">
-              <label htmlFor="password">Contraseña:</label>
+              <label htmlFor="contraseña">Contraseña:</label>
               <input
                 type="password"
-                id="password"
+                id="contraseña"
                 placeholder="Ingresa tu contraseña"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={contrasena}
+                onChange={(e) => setContrasena(e.target.value)}
               />
             </div>
           </div>
