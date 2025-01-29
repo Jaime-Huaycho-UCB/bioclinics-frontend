@@ -23,7 +23,7 @@ export const iniciarSesion = async (nombreUsuario, contrasena) => {
 
 export const obtenerTipos = async () => {
   try {
-    const response = await apiClient.get('/inventario/tipos');
+    const response = await apiClient.get('/producto/tipo/obtener');
     return response.data; 
   } catch (error) {
     throw error.response ? error.response.data : error.message;
@@ -31,10 +31,10 @@ export const obtenerTipos = async () => {
 };
 
 
-// api.js
-export const obtenerProductos = async (tipo = null, buscar = 1) => {
+
+export const obtenerProductos = async (idTipo = null, buscar = 1) => {
     try {
-      const url = `/inventario/productos?tipo=${tipo || ''}&buscar=${buscar}`;
+      const url = `/inventario/obteneridTipo=${idTipo || ''}&buscar=${buscar}`;
       
       const response = await apiClient.get(url);
       return response.data;
