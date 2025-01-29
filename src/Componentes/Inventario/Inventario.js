@@ -98,7 +98,7 @@ const Inventario = () => {
                   <tr key={producto.id} className="table-row">
                     <td>{producto.producto}</td>
                     <td>{producto.precio}</td>
-                    <td>{producto.cantidad}</td>
+                    <td>{producto.stock}</td>
                     <td>{producto.tipo}</td>
                   </tr>
                 ))}
