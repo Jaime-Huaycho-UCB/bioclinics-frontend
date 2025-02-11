@@ -159,16 +159,21 @@
     padding: 20px !important;
     border-radius: 8px !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-    width: 100% !important;
+    width: 97% !important;
     overflow-x: auto !important; 
     table-layout: fixed !important;
   /* Para permitir desplazamiento horizontal en pantallas pequeñas */
   }
   /* Modificar el ancho de una columna específica */
-.table-container th:nth-child(2),
-.table-container td:nth-child(2) {
+.table-container th:nth-child(1),
+.table-container td:nth-child(1) {
   width: 300px !important;
   text-align: center !important; /* Cambia este valor según el ancho deseado */
+}
+.table-container th:nth-child(2),
+.table-container td:nth-child(2) {
+  width: 200px !important; /* Cambia este valor según el ancho deseado */
+  text-align: center !important;
 }
 .table-container th:nth-child(3),
 .table-container td:nth-child(3) {
@@ -180,19 +185,13 @@
   width: 200px !important; /* Cambia este valor según el ancho deseado */
   text-align: center !important;
 }
+
 .table-container th:nth-child(5),
 .table-container td:nth-child(5) {
-  width: 200px !important; /* Cambia este valor según el ancho deseado */
+ /* Cambia este valor según el ancho deseado */
   text-align: center !important;
 }
 
-.table-container th:nth-child(6),
-.table-container td:nth-child(6) {
-  width: 500px !important; /* Cambia este valor según el ancho deseado */
-  text-align: center !important;
-}
-
-  
   
   
   .table-header {
@@ -423,7 +422,7 @@ table td {
   /* Contenedor de paginación */
 .pagination {
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction:row !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 10px !important;

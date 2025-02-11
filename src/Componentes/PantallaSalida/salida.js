@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa"; // Íconos de FontAwesome
 import "./salida.css";
+import { obtenerInterno } from "../peticiones/peticiones";
 const buyers = [
     { id: 1, name: "John Doe" },
     { id: 2, name: "Jane Smith" },
@@ -31,7 +32,24 @@ const Salida = () => {
     products.map((product) => ({ ...product, quantity: 1 }))
   );
   const [selectedBuyer, setSelectedBuyer] = useState("");
-
+  const [interno, setInterno] = useState([]);
+ useEffect(() => {
+    const cargarTipos = async () => {
+      try {
+        const data = await obtenerInterno();
+        if(data.salida){
+    
+        console.log("Datos de tipos:", data); // Ver qué devuelve el backend
+        setInterno(data.internos || []);} // Asegurar que sea un array
+      } catch (error) {
+        console.error('Error al cargar los tipos:', error);
+        setInterno([]); // Evita errores si hay un fallo en la petición
+      }
+    };
+  
+    cargarTipos();
+  }, []);
+  
   const updateQuantity = (id, delta) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -75,20 +93,21 @@ const Salida = () => {
             </div>
           ))}
           <div className="buyer-selection">
-        <label htmlFor="buyer">Select Buyer:</label>
+        <label htmlFor="buyer">Seleccionar Interno:</label>
         <select
-          id="buyer"
-          value={selectedBuyer}
-          onChange={(e) => setSelectedBuyer(e.target.value)}
-          className="buyer-select"
-        >
-          <option value="">-- Select a Buyer --</option>
-          {buyers.map((buyer) => (
-            <option key={buyer.id} value={buyer.name}>
-              {buyer.name}
-            </option>
-          ))}
-        </select>
+            id="Interno"
+            value={selectedBuyer}
+            onChange={(e) => setSelectedBuyer(e.target.value)}
+            className="buyer-select"
+          >
+            <option value="">-- Seleccion Interno --</option>
+            {interno.map((internos) => (
+              <option key={internos.id} value={internos.id}>
+                {internos.nombre}
+              </option>
+            ))}
+          </select>
+
       </div>
 
         </div>
