@@ -93,9 +93,9 @@ export const agregarInterno = async (interno) => {
   }
 };
 
-export const actualizarInterno = async (id, datosActualizados) => {
+export const actualizarInterno = async ( datosActualizados) => {
   try {
-    const response = await apiClient.put(`/interno/editar/${id}`, datosActualizados);
+    const response = await apiClient.put('/interno/editar', { ...datosActualizados });
     return response.data;
   } catch (error) {
     throw error.response ? error.response.data : error.message;

@@ -37,7 +37,7 @@ const TablaInternos = () => {
     if (!nombreActualizado) return;
 
     try {
-      await actualizarInterno(id, { nombre: nombreActualizado });
+      await actualizarInterno({ id : id ,  nombre: nombreActualizado });
       cargarInternos();
     } catch (error) {
       console.error('Error al actualizar interno:', error);
