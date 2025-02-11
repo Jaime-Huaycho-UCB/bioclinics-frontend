@@ -15,9 +15,8 @@ const TablaInternos = () => {
       const data = await obtenerInterno();
       if(data.salida){
         console.log("Datos de internos:", data);
-        setInternos(data || []); // Ver qué devuelve el backend
+        setInternos(data.internos || []); 
       }
-      setInternos(data || []);
     } catch (error) {
       console.error('Error al obtener internos:', error);
     }
