@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaSearch, FaPlus, FaDownload, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { Modal, Button, Form } from "react-bootstrap";
 import { obtenerTipos, obtenerProductos,agregarProducto,eliminarProducto,actualizarProducto } from '../peticiones/peticiones';
 import './Inventario.css';
 import './estilosModal.css'
