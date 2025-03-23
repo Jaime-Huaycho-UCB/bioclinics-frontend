@@ -1,34 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaHome, FaBoxOpen, FaChartLine, FaCog, FaBars } from 'react-icons/fa';
+
+import './barra.css';
 import { Link } from 'react-router-dom';
-import { FaHome, FaRegClock, FaSearch, FaStar, FaBell, FaBookmark, FaBars } from 'react-icons/fa';
-import './barra.css'; // Archivo de estilos
-
 const Barra = () => {
-  return (
-    <div className="sidebar-container-right">
-      <nav className="sidebar-right">
-        {/* Logo */}
-        <div className="logo-container">
-          <div className="logo" />
-          <div className="logo-tooltip">BioClinics</div>
-        </div>
+  const [isOpen, setIsOpen] = useState(true);
 
-        {/* Navigation Items */}
-        <div className="nav-items">
-          {[
-            { icon: <FaHome size={20} />, label: 'Iniciar sesion', link: '/' },
-            { icon: <FaRegClock size={20} />, label: 'Incio', link: '/dashboard' },
-            { icon: <FaSearch size={20} />, label: 'Ventas', link: '/salida' },
-            { icon: <FaStar size={20} />, label: 'Internos', link: '/internos' },
-          ].map((item, index) => (
-            <div key={index} className="nav-item">
-              <Link to={item.link} className="nav-link">
-                {item.icon}
-                <span className="nav-label">{item.label}</span>
-              </Link>
-            </div>
-          ))}
-        </div>
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  return (
+    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
+      
+      <div className="logo">
+        <FaBoxOpen className="logo-icon" />
+        {isOpen && <span className="logo-text">Inventario</span>}
+      </div>
+      <nav className="nav-menu">
+        <a href="#" className="nav-item">
+          <FaHome className="icon" />
+          {isOpen && <span>Inicio</span>}
+        </a>
+        <a href="#" className="nav-item">
+          <FaBoxOpen className="icon" />
+          {isOpen && <span>Productos</span>}
+        </a>
+        <a href="/salida" className="nav-item">
+          <FaChartLine className="icon" />
+          {isOpen && <span>Reportes</span>}
+        </a>
+        <a href="#" className="nav-item">
+          <FaCog className="icon" />
+          {isOpen && <span>Configuración</span>}
+        </a>
       </nav>
     </div>
   );

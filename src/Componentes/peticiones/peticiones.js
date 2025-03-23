@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-   baseURL:  'http://localhost:3000',
-   //  'https://bioclinics-backend-production.up.railway.app', 
+   baseURL:  process.env.REACT_APP_API_URL,
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',

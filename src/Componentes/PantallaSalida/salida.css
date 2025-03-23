@@ -1,229 +1,225 @@
-/* Fuentes y estilo general */
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #7ef5a2, #58d8a3); /* Fondo con gradiente */
-    color: #333;
-    margin: 0;
-    padding: 0;
+/* salida.css */
+
+/* Variables de color para un estilo coherente */
+:root {
+    --primary-color: #2563eb; /* azul elegante */
+    --primary-hover: #1d4ed8;
+    --light-bg: #f9fafb;
+    --text-dark: #111827;
+    --text-light: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --radius: 12px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
-  h1, h2, h3 {
-    font-family: 'Segoe UI', sans-serif;
-    color: #333;
-    font-weight: bold;
+  body {
+    font-family: var(--font-family);
+    background-color: var(--light-bg);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
   }
   
   /* Contenedor principal */
   .cart-container {
-    padding: 30px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    max-width: 1400px;
-    margin: 30px auto;
-    animation: fadeIn 1s ease-in-out;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
   }
   
+  /* Título principal */
   .title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #2a8d6f; /* Verde oscuro complementario */
+    margin-bottom: 30px;
   }
   
-  /* Estilo de la sección principal con productos y factura */
+  /* Layout principal */
   .main-content {
     display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
     justify-content: space-between;
-    gap: 30px;
   }
   
+  /* Productos en el carrito */
   .cart-items {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex: 1 1 60%;
   }
   
   .cart-item {
-    background-color: #eafdf5; /* Fondo pastel claro */
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: slideIn 0.5s ease-out;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
   }
   
   .cart-item-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .cart-item-info {
-    flex: 1;
+    flex-wrap: wrap;
   }
   
   .cart-item-title {
-    font-size: 20px;
-    color: #58d8a3; /* Verde claro */
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-dark);
   }
   
-  .cart-item-price {
-    font-size: 18px;
-    color: #2a8d6f; /* Verde oscuro */
+  .cart-item-price,
+  .cart-item-total {
+    font-size: 0.95rem;
+    color: var(--text-light);
   }
   
   .cart-item-quantity {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
   
   .quantity-btn {
-    background-color: #7ef5a2; /* Verde pastel */
-    border: none;
-    padding: 10px;
+    background-color: var(--primary-color);
     color: white;
+    border: none;
     border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
   }
   
   .quantity-btn:hover {
-    background-color: #58d8a3; /* Verde más oscuro */
+    background-color: var(--primary-hover);
   }
   
   .quantity-text {
-    font-size: 18px;
     font-weight: bold;
+    font-size: 1rem;
   }
   
-  .cart-item-total {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
+  /* Selección de interno */
+  .buyer-selection {
+    margin-top: 30px;
   }
   
-  /* Estilos de la factura */
-.cart-summary {
-    flex: 0.4;
-    background-color: #f0f8f5;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  .buyer-selection label {
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+  
+  .buyer-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Resumen de factura */
+  .cart-summary {
+    flex: 1 1 35%;
+    background-color: #f0f4ff;
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
   }
   
   .summary-title {
-    font-size: 24px;
+    font-size: 1.6rem;
+    color: var(--primary-color);
     margin-bottom: 20px;
-    color: #2a8d6f;
   }
   
   .buyer-info {
     margin-bottom: 20px;
-    font-size: 18px;
   }
   
   .buyer-name,
   .buyer-date {
-    margin: 5px 0;
+    font-size: 1rem;
+    color: var(--text-dark);
   }
   
- /* Estilos de la lista de productos */
-.products-list {
-    display: flex;
-     /* Permite que los productos se ajusten en varias filas si es necesario */
-    justify-content: space-between;  /* Espaciado uniforme entre los elementos */
-    gap: 20px;  /* Espacio entre los productos */
+  /* Lista de productos */
+  .products-list {
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    margin-top: 15px;
   }
   
   .product-item {
-    background-color: #eafdf5;
-    padding: 15px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 30%;  /* Ajusta el tamaño de cada producto, aquí puedes cambiarlo según tus necesidades */
-    box-sizing: border-box;  /* Asegura que el padding no afecte el ancho */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
   }
   
   .product-name {
-    font-size: 18px;
-    color: #58d8a3;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 1.05rem;
   }
   
   .product-quantity,
   .product-price,
   .product-total {
-    font-size: 16px;
-    color: #333;
+    font-size: 0.95rem;
+    color: var(--text-light);
   }
   
+  /* Resumen de precios */
   .summary-text {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+    color: var(--text-dark);
   }
   
   .summary-total {
-    font-size: 22px;
+    font-size: 1.4rem;
     font-weight: bold;
-    margin-top: 20px;
-    color: #58d8a3;
+    color: var(--primary-color);
+    margin-top: 15px;
   }
   
+  /* Botón checkout */
   .checkout-btn {
-    background-color: #7ef5a2;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s ease;
+    margin-top: 25px;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
   }
   
   .checkout-btn:hover {
-    background-color: #58d8a3;
+    background-color: var(--primary-hover);
   }
   
-  
-  /* Animaciones */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
+  /* Responsive */
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
     }
-    to {
-      opacity: 1;
-    }
-  }
   
-  @keyframes slideIn {
-    from {
-      transform: translateX(-50px);
-      opacity: 0;
+    .cart-summary {
+      margin-top: 30px;
     }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  .buyer-selection {
-    margin-top: 20px;
-    font-size: 16px;
-  }
-  
-  .buyer-selection label {
-    margin-right: 10px;
-  }
-  
-  .buyer-select {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    font-size: 16px;
-    color: #333;
   }
   

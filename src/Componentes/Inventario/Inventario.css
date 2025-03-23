@@ -1,530 +1,826 @@
-/* Contenedor principal (padre) */
-.inventory-container {
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 20px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 30px !important;
-    position: relative; 
-  }
+/* InventarioBioclinic.css - Diseño premium mejorado para clínica médica */
+
+/* Variables con paleta de colores actualizada - Azules más oscuros */
+:root {
+  /* Colores principales - Paleta azul médica oscurecida */
+  --primary: #0a4f8c;
+  --primary-light: #e0eef9;
+  --primary-lighter: #eef6fd;
+  --primary-dark: #063b6b;
+  --primary-gradient: linear-gradient(135deg, #0a4f8c, #085f94);
   
-  /* Header */
-  .header-card {
-    background-color: #fff !important;
-    padding: 20px !important;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-    height: 10vh;
-  }
+  /* Colores secundarios */
+  --secondary: #1e3c64;
+  --secondary-light: #eaeff5;
+  --accent: #00b3a0;
+  --accent-light: #e0f7f4;
   
-  /* Contenedor del header (mueve el texto completamente a la derecha) */
-  .header-text-container {
-    max-width: 600px !important;
-    margin: 0 !important;
-    padding: 0 20px !important;
-    text-align: right !important;
-    position: absolute !important; /* Lo coloca en una posición absoluta */
-    left: 20px !important; /* Alinea el contenedor completamente a la derecha */
-    
-  }
+  /* Colores de estado */
+  --success: #00a36c;
+  --success-light: #e0f5ef;
+  --warning: #eb8c00;
+  --warning-light: #fdf1e0;
+  --danger: #d42e2e;
+  --danger-light: #fce4e4;
+  --info: #3a99e0;
+  --info-light: #e4f2fc;
   
-  /* Título con gradiente */
-  .gradient-title {
-    background: linear-gradient(to right, #34d399, #3b82f6) !important; /* Gradiente Verde y Azul */
-    -webkit-background-clip: text !important;
-    color: transparent !important;
-    font-size: 2.5rem !important; /* Fuente grande para llamar la atención */
-    font-weight: 900!important; /* Negrita */
-    text-align: left !important; /* Alinear a la izquierda para pantallas grandes */
-    margin-bottom: 10px !important; /* Espacio debajo del título */
-    letter-spacing: 1px !important; /* Espaciado de letras */
-    transition: background 0.5s ease !important;
-  }
+  /* Texto y fondos */
+  --text-dark: #112141;
+  --text-medium: #344b6c;
+  --text-light: #5a6f8c;
+  --border: #d4e0f0;
+  --border-hover: #b2c6e0;
+  --bg-white: #ffffff;
+  --bg-gray: #f2f7fc;
+  --bg-blue-gradient: linear-gradient(to right, #f0f6fd, #e8f2fb);
   
- 
-  /* Subtítulo */
-  .subheading {
-    font-size: 1.125rem !important; /* Tamaño adecuado para el subtítulo */
-    color: #6b7280 !important;
-    font-weight: 400 !important; /* Peso normal */
-    margin-top: 10px !important;
-    line-height: 1.6 !important; /* Interlineado para mejor lectura */
-    text-align: left !important; /* Alinear a la izquierda para pantallas grandes */
-  }
+  /* Efectos */
+  --shadow-sm: 0 2px 5px rgba(7, 54, 116, 0.07);
+  --shadow: 0 4px 10px rgba(7, 54, 116, 0.09), 0 2px 5px rgba(7, 54, 116, 0.05);
+  --shadow-md: 0 6px 18px rgba(7, 54, 116, 0.12), 0 3px 7px rgba(7, 54, 116, 0.06);
+  --shadow-lg: 0 12px 28px rgba(7, 54, 116, 0.14), 0 6px 14px rgba(7, 54, 116, 0.10);
+  --shadow-hover: 0 8px 22px rgba(7, 54, 116, 0.18), 0 4px 10px rgba(7, 54, 116, 0.12);
+  --shadow-btn: 0 4px 12px rgba(10, 79, 140, 0.25);
+  --glow: 0 0 18px rgba(10, 79, 140, 0.45);
   
-  /* Responsividad: Ajustar texto a la izquierda en pantallas pequeñas */
-  @media (max-width: 768px) {
-    .header-text-container {
-      text-align: left !important; /* Alineación a la izquierda en pantallas pequeñas */
-    }
-    
-    .gradient-title {
-      font-size: 2.5rem !important; /* Ajustar tamaño de título */
-      text-align: left !important; /* Alinear a la izquierda en pantallas pequeñas */
-    }
-    
-    .subheading {
-      font-size: 1rem !important; /* Ajustar tamaño del subtítulo */
-      text-align: left !important; /* Alineación a la izquierda */
-    }
-  }
+  /* Bordes redondeados */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   
-  
- 
-  
-  /* Contenedor que alinea todo a la derecha */
-.search-container {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 15px !important;
-    width: 50% !important;
-    justify-content: flex-end !important; /* Alinea todo a la derecha */
-    left: 350px !important;
-    position:  relative !important;
-  }
-  
-  .search-input {
-    padding-left: 40px !important; /* Espacio para el icono */
-    padding: 12px 20px !important;
-    border-radius: 8px !important;
-    border: 2px solid #ccc !important;
-    font-size: 1rem !important;
-    width: 250px !important;
-    transition: border 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease !important;
-  }
-  
-  /* Alineación del icono dentro del input */
-  .search-input + .absolute {
-    position: absolute !important;
-    left: 15px !important; /* Alineación del icono */
-    top: 50% !important;
-    transform: translateY(-50%) !important; /* Centra el icono verticalmente */
-    color: #bbb !important;
-    transition: color 0.3s ease, transform 0.3s ease !important;
-  }
-  
-  /* Cambiar color del icono cuando el input está enfocado */
-  .search-input:focus + .absolute {
-    color: #10b981 !important; /* Verde */
-    transform: translateY(-50%) scale(1.2) !important; /* Efecto de escala en el icono */
-  }
-  
-  /* Estilo para los botones */
-  .button-primary {
-    padding: 12px 25px !important;
-    background-color: #10b981 !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 8px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    font-size: 1rem !important;
-    cursor: pointer !important;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease !important;
-  }
-  
-  /* Efecto de hover para los botones */
-  .button-primary:hover {
-    background-color: #0f9e6b !important; /* Color más oscuro al pasar el mouse */
-    transform: scale(1.05) !important; /* Efecto de escala al pasar el mouse */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* Sombra al pasar el mouse */
-  }
-  
-  /* Botón Exportar */
-  .button-export {
-    background-color: #3b82f6 !important; /* Azul */
-  }
-  
-  .button-export:hover {
-    background-color: #2563eb !important; /* Azul más oscuro */
-  }
-  
-  /* Botón Nuevo Producto */
-  .button-new {
-    background-color: #fbbf24 !important; /* Amarillo */
-  }
-  
-  .button-new:hover {
-    background-color: #eab308 !important; /* Amarillo más oscuro */
-  }
-  
-  /* Table */
-  .table-container {
-    margin-top: 30px !important;
-    background-color: #fff !important;
-    padding: 20px !important;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-    width: 97% !important;
-    overflow-x: auto !important; 
-    table-layout: fixed !important;
-  /* Para permitir desplazamiento horizontal en pantallas pequeñas */
-  }
-  /* Modificar el ancho de una columna específica */
-.table-container th:nth-child(1),
-.table-container td:nth-child(1) {
-  width: 300px !important;
-  text-align: center !important; /* Cambia este valor según el ancho deseado */
-}
-.table-container th:nth-child(2),
-.table-container td:nth-child(2) {
-  width: 200px !important; /* Cambia este valor según el ancho deseado */
-  text-align: center !important;
-}
-.table-container th:nth-child(3),
-.table-container td:nth-child(3) {
-  width: 200px !important; /* Cambia este valor según el ancho deseado */
-  text-align: center !important;
-}
-.table-container th:nth-child(4),
-.table-container td:nth-child(4) {
-  width: 200px !important; /* Cambia este valor según el ancho deseado */
-  text-align: center !important;
+  /* Transiciones */
+  --transition-fast: all 0.15s ease;
+  --transition: all 0.25s ease;
+  --transition-slow: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.table-container th:nth-child(5),
-.table-container td:nth-child(5) {
- /* Cambia este valor según el ancho deseado */
-  text-align: center !important;
+/* Animaciones globales mejoradas */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-  
-  
-  .table-header {
-    background-color: #f3f4f6 !important;
-    font-size: 1rem !important;
-    color: #4b5563 !important;
-    
-    padding: 12px !important;
-    font-weight: bold !important;
-  }
-  .table-header th {
-    text-align: center; /* Centra el texto en cada columna del encabezado */
-  }
-  
-  th,
-  td {
-    padding: 12px !important;
-    font-size: 1rem !important;
-    text-align: left !important;
-  }
-  
-  td {
-    background-color: #fff !important;
-  }
-  
-  .table-row {
-    transition: background-color 0.3s ease !important;
-  }
-  
-  .table-row:hover {
-    background-color: #e3f2f1 !important; /* Verde claro al pasar el ratón */
-  }
-  
- /* Solo aplicar flex a esta celda de la tabla */
-table td {
-    /* Mantener el comportamiento estándar para otras celdas */
-    vertical-align: middle !important;
-  }
-  
-  /* Estilos del punto de estado */
-  .status-dot {
-    width: 12px !important; /* Tamaño del punto */
-    height: 12px !important;
-    border-radius: 50% !important; /* Redondeado */
-    transition: transform 0.3s ease, background-color 0.3s ease !important;
-  }
-  
-  /* Colores del punto de estado */
-  .status-high {
-    background-color: #34d399 !important; /* Verde */
-  }
-  
-  .status-medium {
-    background-color: #60a5fa !important; /* Azul */
-  }
-  
-  .status-low {
-    background-color: #f87171 !important; /* Rojo */
-  }
-  
-  /* Efecto hover en el punto de estado */
-  .status-dot:hover {
-    transform: scale(1.1) !important; /* Aumento al hacer hover */
-  }
-  
-  /* Estilos de la cantidad */
-  .text-gray-800 {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 1rem !important; /* Tamaño de fuente */
-    font-weight: 500 !important;
-  }
-  
-  /* Ajustes de alineación y espaciado solo para esta celda */
-  .flex.items-center {
-    display: flex !important; /* Flexbox para alineación */
-    justify-content: center !important; /* Alineación horizontal */
-    align-items: center !important; /* Alineación vertical */
-    gap: 8px !important; /* Espaciado entre el punto de estado y el número */
-  }
-  
-  
-  /* Distribución de productos */
-  .product-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
-    gap: 20px !important;
-  }
-  
-  .product-card {
-    background-color: #fff !important;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-    padding: 15px !important;
-    text-align: center !important;
-  }
-  
-  .product-title {
-    font-size: 1.2rem !important;
-    color: #333 !important;
-    font-weight: bold !important;
-  }
-  
-  .product-description {
-    font-size: 0.9rem !important;
-    color: #6b7280 !important;
-  }
-  
-  .product-price {
-    font-size: 1.1rem !important;
-    color: #34d399 !important;
-    font-weight: bold !important;
-  }
-  
-  /* Responsive Styles */
-  @media screen and (max-width: 768px) {
-    .header-card {
-      padding: 15px !important;
-    }
-  
-    .gradient-title {
-      font-size: 1.5rem !important;
-    }
-  
-    .button-primary {
-      width: 100% !important;
-      padding: 12px !important;
-    }
-  
-    .search-input {
-      margin-bottom: 10px !important;
-    }
-  
-    .table-container {
-      padding: 15px !important;
-    }
-  
-    .table-header {
-      font-size: 0.875rem !important;
-    }
-  
-    th,
-    td {
-      font-size: 0.875rem !important;
-      padding: 10px !important;
-    }
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
-   
-.table-actions {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 1.5rem !important; /* Espaciado entre los botones */
-    align-items: center !important;
-  }
-  
-  .table-actions .action-button {
-    position: relative !important;
-    overflow: hidden !important; /* Evita que el efecto se desborde */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 160px !important;
-    height: 50px !important;
-    border-radius: 8px !important;
-    font-size: 1rem !important;
-    font-family: 'Poppins', sans-serif !important;
-    transition: color 0.6s ease-in-out !important;
-    cursor: pointer !important;
-    border: none !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-    z-index: 0 !important;
-  }
-  
-  /* Efecto de relleno progresivo suave */
-  .table-actions .action-button::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: rgba(0, 0, 0, 0.05) !important; /* Color inicial muy sutil */
-    transform: scaleX(0) !important;
-    transform-origin: left !important;
-    z-index: -1 !important;
-    transition: transform 0.8s ease-in-out !important, background 0.8s ease-in-out !important;
-  }
-  
-  /* Hover para el relleno */
-  .table-actions .action-button:hover::before {
-    transform: scaleX(1) !important;
-    background: rgba(0, 0, 0, 0.15) !important; /* Color ligeramente más sólido */
-  }
-  
-  /* Hover para color del texto */
-  .table-actions .action-button:hover {
-    color: white !important;
-    transition: color 0.8s ease-in-out !important;
-  }
-  
-  /* Botones específicos */
-  .table-actions .action-edit {
-    background-color: #ffd3e2 !important;
-    color: #c44569 !important;
-  }
-  
-  .table-actions .action-view {
-    background-color: #d4f3f1 !important;
-    color: #00796b !important;
-  }
-  
-  .table-actions .action-delete {
-    background-color: #e8e8fe !important;
-    color: #304ffe !important;
-  }
-  
-  /* Hover para colores más vivos */
-  .table-actions .action-edit:hover {
-    background-color: #ff8ba7 !important; /* Color más vivo */
-  }
-  
-  .table-actions .action-view:hover {
-    background-color: #20b2aa !important; /* Color más vivo */
-  }
-  
-  .table-actions .action-delete:hover {
-    background-color: #6a5acd !important; /* Color más vivo */
-  }
-  /* Contenedor de paginación */
-.pagination {
-    display: flex !important;
-    flex-direction:row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    margin: 20px 0 !important;
-  }
-  
-  /* Información del rango */
-  .pagination .text-sm {
-    font-size: 1rem !important;
-    font-family: 'Poppins', sans-serif !important;
-    color: #4b5563 !important;
-  }
-  
-  /* Contenedor de botones */
-  .pagination .flex {
-    display: flex !important;
-    gap: 10px !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-  
-  /* Botones de paginación */
-  .pagination-button {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    font-size: 1rem !important;
-    font-family: 'Poppins', sans-serif !important;
-    color: #4b5563 !important;
-    background-color: #f3f4f6 !important;
-    border-radius: 50% !important;
-    border: 2px solid transparent !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease-in-out !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  }
-  
-  /* Botón activo */
-  .pagination-active {
-    color: white !important;
-    background-color: #00796b !important; /* Verde profesional */
-    border-color: #00796b !important;
-    box-shadow: 0 4px 12px rgba(0, 121, 107, 0.4) !important;
-  }
-  
-  /* Hover en los botones */
-  .pagination-button:hover:not(.pagination-active) {
-    background-color: #d1e7dd !important; /* Verde pastel claro */
-    color: #00796b !important;
-    transform: scale(1.1) !important;
-    box-shadow: 0 3px 10px rgba(0, 121, 107, 0.3) !important;
-  }
-  
-  /* Botones deshabilitados */
-  .pagination-button:disabled {
-    color: #a1a1aa !important;
-    background-color: #e5e7eb !important;
-    cursor: not-allowed !important;
-    box-shadow: none !important;
-  }
-  
-  /* Botones de flechas */
-  .pagination-button svg {
-    margin: 0 auto !important;
-    color: inherit !important;
-  }
-  /* Estilo del contenedor de la celda */
-.custom-td {
-    padding: 16px !important;
-  }
-  
-  /* Estilo del círculo con el id */
-  .custom-circle {
-    width: 2.5rem !important; /* Ajusta el tamaño del círculo */
-    height: 2.5rem !important; /* Ajusta el tamaño del círculo */
-    background: linear-gradient(to bottom right, #1ae356, #80c099) !important; /* Gradiente suave verde pastel */
-    border-radius: 9999px !important; /* Hace que el contenedor sea completamente circular */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera para el círculo */
-    transition: transform 0.3s ease-in-out, background 0.3s ease, color 0.3s ease !important; /* Transiciones para animaciones */
-  }
-  
-  /* Color de texto en el círculo */
-  .custom-text {
-    color: #2d6a4f !important; /* Color verde oscuro para el texto */
-    font-weight: 600 !important;
-    transition: transform 0.3s ease, color 0.3s ease !important; /* Transiciones para el texto */
-  }
-  
-  /* Hover effect para el círculo */
-  .custom-circle:hover {
-    transform: scale(1.1) !important; /* Agranda el círculo al hacer hover */
-    background: linear-gradient(to bottom right, #81c784, #388e3c) !important; /* Cambio de gradiente al pasar el mouse */
-  }
-  
-  /* Hover effect para el texto */
-  .custom-circle:hover .custom-text {
-    color: white !important; /* Cambia el color del texto al hacer hover */
-    transform: scale(1.2) !important; /* Aumenta el tamaño del texto al pasar el mouse */
-  }
-  
+
+@keyframes slideDown {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes breatheAnimation {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Base mejorada */
+.bioclinic-inventory {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-dark);
+  background: var(--bg-blue-gradient);
+  min-height: 100vh;
+  padding: 2rem;
+  transition: var(--transition);
+  animation: fadeIn 0.6s ease;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  overflow: hidden; /* Elimina el scroll interno */
+}
+
+/* Tipografía mejorada */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+}
+
+/* Cabecera elegante */
+.bioclinic-header {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: var(--transition);
+}
+
+.bioclinic-header:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--primary-gradient);
+  z-index: 1;
+}
+
+.bioclinic-header:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(10, 79, 140, 0.05) 0%, rgba(10, 79, 140, 0) 70%);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.bioclinic-header:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.bioclinic-title {
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.bioclinic-title h1 {
+  font-size: 1.85rem;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+  position: relative;
+  display: inline-block;
+}
+
+.bioclinic-title h1:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 45px;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.bioclinic-title:hover h1:after {
+  width: 100%;
+}
+
+.bioclinic-title p {
+  color: var(--text-light);
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* Notificación con animación mejorada */
+.bioclinic-notification {
+  padding: 1rem 1.4rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+  animation: fadeInOut 4.5s forwards;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  border-left: 0;
+}
+
+.bioclinic-notification:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: 2px 0 0 2px;
+}
+
+.bioclinic-notification:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+  animation: shimmer 3s infinite;
+  transform: translateX(-100%);
+}
+
+.bioclinic-notification.success {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.bioclinic-notification.success:before {
+  background-color: var(--success);
+}
+
+.bioclinic-notification.error {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.bioclinic-notification.error:before {
+  background-color: var(--danger);
+}
+
+.bioclinic-notification.info {
+  background-color: var(--info-light);
+  color: var(--info);
+}
+
+.bioclinic-notification.info:before {
+  background-color: var(--info);
+}
+
+.bioclinic-notification.warning {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.bioclinic-notification.warning:before {
+  background-color: var(--warning);
+}
+
+/* Filtros sofisticados */
+.bioclinic-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  animation: slideUp 0.6s ease;
+}
+
+.bioclinic-filter-group {
+  display: flex;
+  gap: 1.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.bioclinic-select {
+  min-width: 180px;
+  height: 46px;
+  padding: 0 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  font-size: 0.92rem;
+  font-weight: 500;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23344b6c'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.bioclinic-select:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow);
+}
+
+.bioclinic-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(10, 79, 140, 0.15);
+}
+
+.bioclinic-search {
+  position: relative;
+  flex: 2;
+  min-width: 200px;
+}
+
+.bioclinic-search input {
+  width: 100%;
+  height: 46px;
+  padding: 0 1rem 0 2.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  font-size: 0.92rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+}
+
+.bioclinic-search input:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow);
+}
+
+.bioclinic-search input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(10, 79, 140, 0.15);
+}
+
+.bioclinic-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.bioclinic-search input:focus + .bioclinic-search-icon {
+  color: var(--primary);
+}
+
+/* Botones de acción mejorados y elegantes */
+.bioclinic-action-buttons {
+  display: flex;
+  gap: 1rem;
+  animation: slideUp 0.6s ease 0.15s both;
+}
+
+.bioclinic-btn {
+  height: 46px;
+  padding: 0 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bioclinic-btn:active {
+  transform: translateY(2px);
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-primary:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0));
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.btn-primary:hover:before {
+  opacity: 1;
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(30, 60, 100, 0.25);
+}
+
+.btn-secondary:hover {
+  background: #183153;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 15px rgba(30, 60, 100, 0.3);
+}
+
+.btn-outline {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border);
+  color: var(--text-medium);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline:hover {
+  border-color: var(--border-hover);
+  background-color: var(--primary-lighter);
+  color: var(--primary);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+/* Tabla premium */
+.bioclinic-table-container {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: auto; /* Permitir scroll solo dentro de la tabla */
+  margin-bottom: 1.75rem;
+  min-height: 300px;
+  max-height: calc(100vh - 300px); /* Altura máxima para evitar scroll en la página completa */
+  transition: var(--transition);
+  animation: slideUp 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.25s both;
+  position: relative;
+  flex: 1;
+}
+
+.bioclinic-table-container:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.bioclinic-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.bioclinic-table th {
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-align: left;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.bioclinic-table td {
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+  color: var(--text-medium);
+  transition: var(--transition-fast);
+}
+
+.bioclinic-table tr {
+  transition: var(--transition-fast);
+}
+
+.bioclinic-table tr:last-child td {
+  border-bottom: none;
+}
+
+.bioclinic-table tr:hover td {
+  background-color: var(--primary-lighter);
+}
+
+/* Acciones en tabla sofisticadas */
+.bioclinic-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
+.bioclinic-icon-btn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.bioclinic-icon-btn:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s;
+}
+
+.bioclinic-icon-btn:active:after {
+  transform: translate(-50%, -50%) scale(2.5);
+  opacity: 1;
+  transition: 0s;
+}
+
+.bioclinic-icon-btn.delete {
+  color: var(--text-light);
+}
+
+.bioclinic-icon-btn.delete:hover {
+  color: var(--danger);
+  background-color: var(--danger-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.bioclinic-icon-btn.edit {
+  color: var(--text-light);
+}
+
+.bioclinic-icon-btn.edit:hover {
+  color: var(--primary);
+  background-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.bioclinic-icon-btn.cart {
+  color: var(--text-light);
+}
+
+.bioclinic-icon-btn.cart:hover {
+  color: var(--success);
+  background-color: var(--success-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Estados de carga y vacío premium */
+.bioclinic-loading, .bioclinic-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: var(--text-light);
+  min-height: 300px;
+}
+
+.bioclinic-spinner {
+  width: 45px;
+  height: 45px;
+  border: 3px solid var(--primary-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 15px rgba(10, 79, 140, 0.12);
+}
+
+.bioclinic-empty {
+  animation: fadeIn 0.6s ease;
+}
+
+.bioclinic-empty svg {
+  width: 80px;
+  height: 80px;
+  color: var(--primary-light);
+  margin-bottom: 1.25rem;
+  animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.bioclinic-empty p {
+  font-size: 1.05rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Paginación elegante y moderna */
+.bioclinic-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  animation: slideUp 0.9s cubic-bezier(0.19, 1, 0.22, 1) 0.35s both;
+  padding-bottom: 1rem; /* Espacio adicional inferior */
+}
+
+.bioclinic-pagination-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background-color: var(--bg-white);
+  border: 1px solid var(--border);
+  color: var(--text-medium);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  font-weight: 500;
+}
+
+.bioclinic-pagination-btn:hover:not(:disabled) {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.bioclinic-pagination-btn.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-btn);
+}
+
+.bioclinic-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Modal premium y sofisticado */
+.bioclinic-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(10, 20, 45, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1), 
+              visibility 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.bioclinic-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bioclinic-modal {
+  width: 90%;
+  max-width: 520px;
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transform: translateY(30px) scale(0.95);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), 
+              opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.bioclinic-modal-overlay.active .bioclinic-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.bioclinic-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 1.6rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.bioclinic-modal-header:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--primary-gradient);
+}
+
+.bioclinic-modal-header h2 {
+  font-size: 1.25rem;
+  color: var(--text-dark);
+}
+
+.bioclinic-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.bioclinic-modal-close:hover {
+  color: var(--danger);
+  background-color: var(--danger-light);
+  transform: rotate(90deg);
+}
+
+.bioclinic-modal-body {
+  padding: 1.8rem 1.6rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.bioclinic-form-group {
+  margin-bottom: 1.6rem;
+  animation: slideUp 0.45s ease;
+  animation-fill-mode: both;
+}
+
+.bioclinic-form-group:nth-child(1) { animation-delay: 0.06s; }
+.bioclinic-form-group:nth-child(2) { animation-delay: 0.12s; }
+.bioclinic-form-group:nth-child(3) { animation-delay: 0.18s; }
+.bioclinic-form-group:nth-child(4) { animation-delay: 0.24s; }
+
+/* Inputs premium */
+.bioclinic-form-group label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-medium);
+  margin-bottom: 0.7rem;
+  transition: var(--transition);
+}
+
+.bioclinic-form-group input,
+.bioclinic-form-group select {
+  width: 100%;
+  height: 46px;
+  padding: 0 1.1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.bioclinic-form-group input:hover,
+.bioclinic-form-group select:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 2px 8px rgba(10, 79, 140, 0.06);
+}
+
+.bioclinic-form-group input:focus,
+.bioclinic-form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(10, 79, 140, 0.15);
+}
+
